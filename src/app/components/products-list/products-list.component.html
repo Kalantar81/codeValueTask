@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="controls-slot">
+        <button type="button" (click)="create()">+ Add</button>
+    </div>
+    <div class="products-slot">
+        <div class="products-list">
+            <div *ngFor="let product of productsService.productsList; let i = index">
+                <div class="product" (click)="selectProduct(product)">
+                    <div>
+                        <img width="40" height="40" src="assets/images/rxjs.png"/>
+                    </div>
+                    <div>
+                        <h3>{{product.name}}</h3>
+                        <small>{{product.description}}</small>
+                    </div>
+                    <div>
+                        <button (click)="deleteProduct(i)">
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-container">
+            <app-product-description 
+                *ngIf="product"
+                [product]="product"
+                (updateProduct)="updateProduct($event)">
+            </app-product-description>
+        </div>
+    </div>
+</div>

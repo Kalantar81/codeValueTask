@@ -1,0 +1,27 @@
+<div [formGroup]="form">
+    <div>
+      <div>
+        <img width="40" height="40" src="assets/images/rxjs.png"/>
+      </div>
+  
+      <div>
+        <div>
+            <label>Name</label>
+            <input formControlName="ProductName">
+        </div>
+        <div>
+            <label>Description</label>
+            <input formControlName="Description">
+        </div>
+        <div>
+            <label>Price</label>
+            <input formControlName="Price">
+        </div>
+        <div>
+            <label>Creation Date</label>
+            <input formControlName="CreationDate">
+        </div>
+      </div>
+      <button type="button" (click)="update()">{{isCreate ? 'Save' : 'Update'}}</button>
+    </div>
+  </div>
