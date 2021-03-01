@@ -5,15 +5,31 @@
       <div>
         <img width="40" height="40" src="assets/images/rxjs.png"/>
       </div>
-  
+      <h4>{{date | date: 'dd/MM/yyyy'}}</h4>
       <div>
         <div>
             <label>Name</label>
-            <input formControlName="productName">
+            <input 
+              formControlName="productName"
+              placeholder="required field">
+            <div style="color: red">
+            <small *ngIf="form.touched && form.get('productName').errors?.required">
+                This field can't be empty
+            </small>
+            <small *ngIf="form.get('productName').errors?.maxlength">
+                The name is too long
+            </small>
+            </div>
         </div>
         <div>
             <label>Description</label>
-            <input formControlName="description">
+            <input 
+              formControlName="description"
+              placeholder="required field">
+            <br/>
+            <small style="color: red" *ngIf="form.touched && form.get('description').errors?.required">
+              This field can't be empty
+          </small>
         </div>
         <div>
             <label>Price</label>
@@ -21,10 +37,17 @@
         </div>
         <div>
             <label>Creation Date</label>
-            <input formControlName="creationDate">
+            <input 
+              formControlName="creationDate"
+              />
         </div>
       </div>
-      <button type="submit" value="submit">{{isCreate ? 'Save' : 'Update'}}</button>
+      <button 
+        type="submit" 
+        value="submit"
+        [disabled]="form.invalid">
+          {{isCreate ? 'Save' : 'Update'}}
+      </button>
 
     </div>
   </form>
