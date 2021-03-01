@@ -28,17 +28,23 @@ export class ProductDescriptionComponent  {
       this.isCreate = true;
     }
 
-    this.form.patchValue(product);
+    this.form.patchValue({
+      productName: product.name,
+      description: product.description,
+      price: product.price,
+      creationDate: product.creationDate,
+    });
+    console.log(this.form);
   }
 
   @Output() updateProduct: EventEmitter<IProduct> = new EventEmitter();
 
   public form = new FormGroup({
-    Id: new FormControl(),
-    ProductName: new FormControl('', [Validators.maxLength(30)]),
-    Description: new FormControl('', [Validators.required]),
-    Price: new FormControl('', [Validators.required]),
-    CreationDate: new FormControl('', [Validators.required]),
+    id: new FormControl(),
+    productName: new FormControl('', [Validators.maxLength(30)]),
+    description: new FormControl('', [Validators.required]),
+    price: new FormControl('', [Validators.required]),
+    creationDate: new FormControl('', [Validators.required]),
   });
 
   constructor() { }
@@ -46,7 +52,14 @@ export class ProductDescriptionComponent  {
   public update(): void {
     // Add Validation for form
     if (!this.form.errors) {
-      this.updateProduct.emit(this.form.getRawValue() as IProduct);
+      const formData = {...this.form.value};
+      this.updateProduct.emit({
+        id: undefined,
+        name: formData.productName,
+        description: formData.description,
+        price: formData.price,
+        creationDate: formData.creationDate
+      });
     }
   }
 

@@ -12,10 +12,10 @@ export class ProductsService {
   constructor() {
     this.productsList = [
       {id: 1, name: 'book', description: 'New book about Harry Potter', price: 20, creationDate: new Date()},
-      {id: 1, name: 'apple', description: 'Tasty green apple', price: 3, creationDate: new Date()},
-      {id: 1, name: 'car', description: 'Fast car', price: 3450, creationDate: new Date()},
-      {id: 1, name: 'computer', description: 'New mac air', price: 300, creationDate: new Date()},
-      {id: 1, name: 'Halk', description: 'The toy Halk from advanchers', price: 20, creationDate: new Date()}
+      {id: 2, name: 'apple', description: 'Tasty green apple', price: 3, creationDate: new Date()},
+      {id: 3, name: 'car', description: 'Fast car', price: 3450, creationDate: new Date()},
+      {id: 4, name: 'computer', description: 'New mac air', price: 300, creationDate: new Date()},
+      {id: 5, name: 'Halk', description: 'The toy Halk from advanchers', price: 20, creationDate: new Date()}
     ];
   }
 
@@ -48,7 +48,7 @@ export class ProductsService {
 
   public create(product: IProduct): number {
     const id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
-    const newProduct = {...product, ...{id: id}}; // new product
+    const newProduct = {...product, ...{id}}; // new product
     this.productsList.push(product);
     return id;
   }
@@ -64,7 +64,7 @@ export class ProductsService {
   }
 
   private getProductIndexById(id: number): any {
-    return this.productsList.findIndex(b => b.id === id);
+    return this.productsList.findIndex((b: IProduct) => b.id === id);
   }
 }
 

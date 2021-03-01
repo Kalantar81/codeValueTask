@@ -1,4 +1,6 @@
-<div [formGroup]="form">
+<form 
+  [formGroup]="form"
+  (ngSubmit)="update()">
     <div>
       <div>
         <img width="40" height="40" src="assets/images/rxjs.png"/>
@@ -7,21 +9,22 @@
       <div>
         <div>
             <label>Name</label>
-            <input formControlName="ProductName">
+            <input formControlName="productName">
         </div>
         <div>
             <label>Description</label>
-            <input formControlName="Description">
+            <input formControlName="description">
         </div>
         <div>
             <label>Price</label>
-            <input formControlName="Price">
+            <input formControlName="price">
         </div>
         <div>
             <label>Creation Date</label>
-            <input formControlName="CreationDate">
+            <input formControlName="creationDate">
         </div>
       </div>
-      <button type="button" (click)="update()">{{isCreate ? 'Save' : 'Update'}}</button>
+      <button type="submit" value="submit">{{isCreate ? 'Save' : 'Update'}}</button>
+
     </div>
-  </div>
+  </form>

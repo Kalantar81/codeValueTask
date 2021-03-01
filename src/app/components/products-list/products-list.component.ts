@@ -23,8 +23,8 @@ export class ProductsListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public deleteProduct(index: number): void {
-    this.productsService.deleteProduct(index);
+  public deleteProduct(productId: number): void {
+    this.productsService.deleteProduct(productId);
   }
 
   public create(): void {

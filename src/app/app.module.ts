@@ -7,14 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductDescriptionComponent } from './components/product-description/product-description.component';
-import { ProductsComponent } from './services/products/products.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsListComponent,
-    ProductDescriptionComponent,
-    ProductsComponent,
+    ProductDescriptionComponent
   ],
   imports: [
     BrowserModule,
